@@ -35,3 +35,7 @@ async def read_todos(skip: int=0, limit: int = 10):
     todos = db.query(Todo).offset(skip).limit(limit).all()
     db.close()
     return todos
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("server.api:app", host="0.0.0.0", port=8000, reload=True)
